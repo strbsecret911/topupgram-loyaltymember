@@ -4,7 +4,8 @@ import {
   getAuth,
   GoogleAuthProvider,
   signInWithPopup,
-  signOut
+  signOut,
+  signInAnonymously
 } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-auth.js";
 
 const firebaseConfig = {
@@ -17,17 +18,22 @@ const firebaseConfig = {
   measurementId: "G-CPZ72XENLV"
 };
 
-const app = initializeApp(firebaseConfig);
-
+export const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
 export const auth = getAuth(app);
 
 const provider = new GoogleAuthProvider();
-provider.setCustomParameters({ prompt: "select_account" });
+
+export async function ensureAnon(){
+  if(!auth.currentUser){
+    await signInAnonymously(auth);
+  }
+}
 
 export async function adminLogin(){
   return signInWithPopup(auth, provider);
 }
+
 export async function adminLogout(){
   return signOut(auth);
 }
