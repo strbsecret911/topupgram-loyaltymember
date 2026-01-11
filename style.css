@@ -58,6 +58,12 @@ body{
   font-weight:650;
 }
 
+.btn.danger{
+  background:#fff;
+  color:#b00020;
+  border:1px solid rgba(176,0,32,.25);
+}
+
 .btn:disabled{
   opacity:.55;
   cursor:not-allowed;
@@ -76,7 +82,6 @@ input, select{
   border:1px solid var(--border);
   outline:none;
   background:#fff;
-  color:var(--text);
 }
 
 .helper{ margin-top:6px; font-size:12px; color:var(--muted); }
@@ -100,6 +105,28 @@ hr{ border:none; border-top:1px solid var(--border); margin:12px 0; }
 .error{ margin-top:8px; color:#b00020; font-size:13px; }
 .ok{ margin-top:8px; color:#1b5e20; font-size:13px; }
 
+.tabs{
+  display:flex;
+  gap:8px;
+  margin-top:12px;
+}
+
+.tab{
+  flex:1;
+  padding:10px;
+  border-radius:14px;
+  border:1px solid var(--border);
+  background:#fff;
+  cursor:pointer;
+  font-weight:700;
+  color:var(--text);
+}
+
+.tab.active{
+  border-color: var(--text);
+  background: rgba(201,219,240,.35);
+}
+
 .footer{ margin-top:18px; }
 .hint{
   padding:12px;
@@ -109,22 +136,59 @@ hr{ border:none; border-top:1px solid var(--border); margin:12px 0; }
   color:var(--muted);
 }
 
-/* Modal */
+/* ===== iOS-like Modal ===== */
 .modal-backdrop{
-  position:fixed; inset:0;
-  background: rgba(0,0,0,.28);
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.35);
   display:flex;
-  align-items:flex-end;
+  align-items:center;
   justify-content:center;
-  padding:14px;
+  padding:18px;
+  z-index:9999;
 }
 
 .modal{
-  width:min(520px, 100%);
+  width:min(420px, 100%);
   background:#fff;
   border-radius:18px;
   border:1px solid var(--border);
+  box-shadow:0 18px 60px rgba(0,0,0,.20);
   padding:14px;
 }
 
-.modal .row{ margin-top:10px; }
+.modal h3{
+  margin:2px 0 8px;
+  font-size:16px;
+}
+
+.modal .msg{
+  font-size:13px;
+  color:var(--muted);
+  line-height:1.45;
+  white-space:pre-line;
+}
+
+.modal .actions{
+  margin-top:12px;
+  display:flex;
+  gap:10px;
+}
+
+.modal .actions .btn{ margin-top:0; }
+
+.voucher-box{
+  margin-top:10px;
+  border:1px dashed var(--border);
+  background:rgba(201,219,240,.25);
+  border-radius:14px;
+  padding:10px;
+}
+
+.voucher-code{
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  font-size:22px;
+  font-weight:800;
+  letter-spacing:2px;
+  color:var(--text);
+}
